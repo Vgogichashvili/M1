@@ -1,0 +1,34 @@
+<header class="bg-violet-300 fixed w-full">
+     <div class="flex flex-wrap items-center justify-between">
+       <div class="w-full sm:w-auto flex items-center justify-start">
+         <i class="fas fa-shipping-fast text-2xl text-violet-500 mr-10 pl-4"></i>
+         <a routerLink="/list" class="text-xl text-black font-bold tracking-widest uppercase">make a choice</a>
+       </div>
+       <div class="res-div w-full sm:w-auto flex items-center justify-end mt-2 sm:mt-0">
+         <div class=" mr-4 mb-2 p-2">
+           <form class="flex gap-2">
+             <select (change)="logSelected($event.target)" class="bg-white shadow px-2 py-2 border-black focus:outline-none">
+               <option>Choose category</option>
+               <option *ngFor="let category of listCategory" [value]="category">{{category}}</option>
+               <option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</option>
+             </select>
+           </form>
+         </div>
+         <div class="shopping-container">
+           <div routerLink="/cart" class="counter-container hover:bg-violet-500 cursor-pointer">
+             <span class="counter">{{totalItem}}</span>
+             <i class="cart fas fa-shopping-cart text-2xl text-violet-500"></i>
+           </div>
+           <button (click)="onClick()">
+             <span class="text-sm text-white hover:bg-violet-500 cursor-pointer mr-2 sm:mr-4 bg-violet-400 shadow p-4">long Out</span>
+           </button>
+         </div>
+       </div>
+     </div>
+   </header>
+   
+   
+   
+   
+   
+   

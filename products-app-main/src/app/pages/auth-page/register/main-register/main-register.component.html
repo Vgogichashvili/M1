@@ -1,0 +1,93 @@
+<div class="min-h-screen py-40" style="background-image: linear-gradient(115deg, #9F7AEA, #FEE2FE)">
+    <div class="container mx-auto">
+        <div class=" flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden  ">
+            <div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center" style="background-image: url('../../../assets/img/img-6.jpg');">
+                <h1 class="text-white  text-xl  mb-3 ">Welcome</h1>
+                <p class="text-white text-sm ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi, atque.</p>
+            </div>
+            <div class="w-full lg:w-1/2 py-16 px-12">
+                <h2 class="text-3xl md:text-2xl mb-4  uppercase text-black font-bold">register</h2>
+                <p class="mb-4 capitalize  text-sm font-normal text-black">create your account, it's free and only take a minute</p>
+                <form [formGroup]="registerForm">
+                        <div class=" grid grid-cols-2 gap-5 ">
+                            <input formControlName="firstName"
+                                        placeholder="First name*"
+                                        type="text"
+                                        class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1"
+                                        [class.red]="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)"
+                                        [class.green]="!registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+                            <div class="text-[16px] text-red-700"  *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+                                <div *ngIf="registerForm.get('firstName').hasError('required')">First Name is required</div>
+                                <div *ngIf="registerForm.get('firstName').hasError('minlength')">First Name should have at least 3 characters</div>
+                                <div *ngIf="registerForm.get('firstName').hasError('maxlength')">First Name should have at most 9 characters</div>
+                            </div>
+                            <input formControlName="lastName" 
+                                        placeholder="Last name*"
+                                        type="text"
+                                        class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1"
+                                        [class.red]="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)"
+                                        [class.green]="!registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+                            <div class="text-[16px] text-red-700"  *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+                                <div *ngIf="registerForm.get('lastName').hasError('required')">Last Name is required</div>
+                                <div *ngIf="registerForm.get('lastName').hasError('minlength')">Last Name should have at least 3 characters</div>
+                                <div *ngIf="registerForm.get('lastName').hasError('maxlength')">Last Name should have at most 20 characters</div>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                                <input formControlName="tel" 
+                                            placeholder="Mobile Phone*"
+                                            type="number"
+                                            class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1 w-full"
+                                            [class.red]="registerForm.get('tel')?.invalid && (registerForm.get('tel')?.dirty || registerForm.get('tel')?.touched)"
+                                            [class.green]="!registerForm.get('tel')?.invalid && (registerForm.get('tel')?.dirty || registerForm.get('tel')?.touched)">
+                                <div class="text-[16px] text-red-700"  *ngIf="registerForm.get('tel')?.invalid && (registerForm.get('tel')?.dirty || registerForm.get('tel')?.touched)">
+                                    <div *ngIf="registerForm.get('tel').hasError('required')">Mobile Phone is required</div>
+                                    <div *ngIf="registerForm.get('tel').hasError('pattern')">Invalid phone format</div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <input type="number"
+                                            formControlName="age"
+                                            placeholder="age*" 
+                                            class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1 w-full"
+                                            [class.red]="registerForm.get('age')?.invalid && (registerForm.get('age')?.dirty || registerForm.get('age')?.touched)"
+                                            [class.green]="!registerForm.get('age')?.invalid && (registerForm.get('age')?.dirty || registerForm.get('age')?.touched)">
+                                <div class="text-[16px] text-red-700"  *ngIf="registerForm.get('age')?.invalid && (registerForm.get('age')?.dirty || registerForm.get('age')?.touched)">
+                                        Age is required!
+                                </div>
+                             </div>
+                             <div class="mt-5">
+                                <input formControlName="email"
+                                            placeholder="Email*"
+                                            type="email"
+                                            class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1 w-full"
+                                            [class.red]="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)"
+                                            [class.green]="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                                <div class="text-[16px] text-red-700"  *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                                    <div *ngIf="registerForm.get('email').hasError('required')">Email is required</div>
+                                    <div *ngIf="registerForm.get('email').hasError('email')">Invalid email format</div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                            <input formControlName="password" 
+                                        type="password"
+                                        placeholder="password*"
+                                        class="border focus:border-violet-500 focus:bg-white focus:outline-none capitalize px-2 py-1 w-full"
+                                        [class.red]="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)"
+                                        [class.green]="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                            <div class="text-[16px] text-red-700" *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                                <div *ngIf="registerForm.get('password').hasError('required')">Password is required</div>
+                                <div *ngIf="registerForm.get('password').hasError('minlength')">Password should have at least 6 characters</div>
+                                <div *ngIf="registerForm.get('password').hasError('maxlength')">Password should have at most 20 characters</div>
+                                <div *ngIf="registerForm.get('password').hasError('invalidPassword')">Password must contain at least one uppercase letter and one symbol</div>
+                            </div>
+                        </div>
+                        <p class="text-xs ml-2 mt-[2rem] mb-5">Please visit our Privacy Policy to understand how we handle your personal data.</p>
+                        <div class="mt-5 ">
+                            <button  (click)="onSubmit()" type="submit" class="bg-violet-500 hover:bg-violet-600 px-2 py-1 w-full ml-[0.5rem] mb-[1rem] rounded text-white font-bold text-base capitalize " type="submit">Register</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

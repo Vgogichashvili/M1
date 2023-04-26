@@ -1,0 +1,28 @@
+
+<div  class="res-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-auto justify-center items-center h-screen">
+     <div *ngIf="loading$ | async" class="text-center">Loading products... </div>
+     <div *ngFor="let item of productsList$ | async" class="pb-10">
+          <div >
+               <div class="bg-white  rounded-lg mt-20 ml-20 mr-20 mb-10 ">
+                    <a routerLink="/details/{{item.id}}">
+                    <img src="{{item.images[0]}}" alt="{{item.alt}}" class="w-[40%]  rounded object-cover object-center mb-6">
+                    </a>
+                    <h3 class="text-sm text-black font-medium mb-2 md:mb-4 overflow-hidden capitalize">{{item.title}}</h3>
+                    <div class="flex justify-between mb-2">
+                         <p class="tracking-widest text-gray text-xs font-medium uppercase">{{item.category}}</p>
+                         <p class="tracking-widest text-gray-800 text-xs font-medium uppercase pr-6">{{item.price | currency: 'GEL '}}</p>
+                    </div>
+               </div>
+          <button (click)="addtocart(item)"  class="bg-violet-300 hover:bg-violet-400 px-3 py-2 ml-20 rounded text-white font-bold text-base capitalize ">add to cart</button>
+        </div>
+     </div>
+</div>
+   
+
+     
+
+    <!-- <div>
+          <button [disabled]="(currentPage$ | async) === 1" (click)="previousPage()">Previous</button>
+          <span>{{ currentPage$ | async }} of {{ totalPage$ | async }}</span>
+          <button [disabled]="(currentPage$ | async) === (totalPage$ | async)" (click)="nextPage()">Next</button>
+  </div> -->

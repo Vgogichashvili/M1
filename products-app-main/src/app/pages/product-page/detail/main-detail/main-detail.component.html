@@ -1,0 +1,36 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-auto justify-center items-center h-screen">
+     <div *ngIf=" itemProduct$ | async as  itemProduct">
+       <div class="p-4 md:p-16 res-div">
+         <i routerLink="/list" class="fas fa-arrow-left mb-10 text-xl font-bold cursor-pointer"></i>
+         <div class="mb-5">
+           <h1 class="text-4xl font-bold tracking-wide">{{itemProduct.title}}</h1>
+         </div>
+         <div class="flex items-center text-sm">
+           <span class="text-gray-900/40">technique / </span>
+           <p class="">{{itemProduct.brand}}</p>
+         </div>
+       </div>
+       <div class="">
+         <div class="ml-4 md:ml-16 mb-3 md:mb-0">
+           <h3 class="text-sm text-black font-medium mb-4 overflow-hidden capitalize">{{ itemProduct.title}}</h3>
+           <div>
+             <div class="flex">
+               <p class="tracking-widest text-gray text-xs font-medium uppercase">{{ itemProduct.category}}</p>
+               <p class="tracking-widest text-bold text-xs font-medium uppercase pr-6 md:pl-10">{{ itemProduct.price | currency: 'GEL '}}</p>
+             </div>
+             <div class="">
+               <p>rating: <span class="text-bold">{{itemProduct.rating}}</span></p>
+               <p>discountPercentage: <span class="text-bold">{{itemProduct.discountPercentage}}</span></p>
+               <p>stock: <span class="text-bold">{{itemProduct.stock}}</span></p>
+             </div>
+           </div>
+           <p class="pt-9 leading-relaxed">{{itemProduct.description}}</p>
+         </div>
+         <button (click)="addtocart(itemProduct)" class="bg-violet-400 hover:bg-violet-500 px-3 py-2 mt-3 ml-4 md:ml-16 rounded text-white font-bold text-base capitalize">add to cart</button>
+       </div>
+     </div>
+     <div *ngIf=" itemProduct$ | async as  itemProduct ">
+     <div *ngIf="itemProduct.length !=0">
+       <img src="{{itemProduct.images[0]}}" alt="{{itemProduct.alt}}" class="w-[50%] md:w-50 rounded object-cover object-center mt-6">
+     </div>
+   </div>
